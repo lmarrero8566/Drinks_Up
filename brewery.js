@@ -61,7 +61,7 @@ $(document).ready(function()    {
     url: bdbQueryURL,
     method: "GET"
     }) .then (function(response) {
-
+            popMap(response);
             $(response).each(function()   {
                 obj = {
                     name: this.name,
