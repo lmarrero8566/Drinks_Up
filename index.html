@@ -16,16 +16,10 @@
 </head>
 
 <body>
-    <main>
-        <div class="showcase">
-            <div class="carousel">
-                <a class="carousel-item"><img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></a>
-                <a class="carousel-item"><img src="https://s3.envato.com/files/278553363/AD4A1397.jpg"></a>
-                <a class="carousel-item"><img src="https://as2.ftcdn.net/jpg/02/01/97/21/500_F_201972150_6Kqt5pZDeHpVSIColag0hwwZarnRgFod.jpg"></a>
-                <a class="carousel-item"><img src="https://s3.envato.com/files/293176709/_00A0660.jpg"></a>
-                <a class="carousel-item"><img src="https://image.shutterstock.com/image-photo/selection-best-selling-drinks-beer-260nw-493912132.jpg"></a>
-            </div>
-        </div>
+
+    <h1>TITLE</h1>
+
+    <main>       
         <div class="container">
             <div class="row">
                 <div class="col s12">
@@ -34,14 +28,67 @@
                         <li class="tab col s3"><a href="#test2">Find a Drink Nearby</a></li>
                     </ul>
                 </div>
-                <div id="test1" class="col s12">Test 1</div>
-                <div id="test2" class="col s12">Test 2
-                    <div id="map"></div>
+                <div id="test1" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <select>
+                            <option value="" disabled selected>Drinks</option>
+                            <option value="Tequila">Tequila</option>
+                            <option value="Vodka">Vodka</option>
+                            <option value="Rum">Rum</option>
+                            <option value="Whiskey">Whiskey</option>
+                            <option value="Gin">Gin</option>
+                            <option value="Brandy">Brandy</option>
+                            </select>
+                            <label>Choose preferred drink</label>
+
+                            <form method="post" action="">
+                                Type desired drink:
+                                <input type="text" name="City">
+                                <br/>
+                                <input type="submit" value="Submit">
+
+                        </div>
+                      <div class="col s6">Ingridients will be here</div>
+                          
+                    </div>
                 </div>
             </div>
+                <div id="test2" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">                       
+                            <form method="post" action="">
+                                City:
+                                <input type="text" name="City">
+                                <br/>
+                                State:
+                                <input type="text" name="State">
+                                <br/>
+                                Zip:
+                                <input type="text" name="Zip">                                
+                                <input type="submit" value="Submit">
+                            </form>
+                            <br/>
+                                <div class="col s6">
+                                    <div id="map"></div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
         </div>
+                <div class="showcase">
+                    <div class="carousel">
+                        <a class="carousel-item"><img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></a>
+                        <a class="carousel-item"><img src="https://s3.envato.com/files/278553363/AD4A1397.jpg"></a>
+                        <a class="carousel-item"><img src="https://as2.ftcdn.net/jpg/02/01/97/21/500_F_201972150_6Kqt5pZDeHpVSIColag0hwwZarnRgFod.jpg"></a>
+                        <a class="carousel-item"><img src="https://s3.envato.com/files/293176709/_00A0660.jpg"></a>
+                        <a class="carousel-item"><img src="https://image.shutterstock.com/image-photo/selection-best-selling-drinks-beer-260nw-493912132.jpg"></a>
+                    </div>
+                </div>
     </main>
-    <script src="./assets/script.js"></script>
+    <script src="./assets/map.js"></script>
+    <script src="./assets/index.js"></script>
+    <script src="./assets/brewery.js"></script>
 </body>
 
 </html>

@@ -5,9 +5,14 @@
 }
 
 #test1 {
-    height: 40vh;
+    height: 30vh;
 }
 
 #test2 {
-    height: 40vh;
+    height: 30vh;
+}
+
+h1 {
+    text-align: center;
+    height: 10vh;
 }
