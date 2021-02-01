@@ -54,12 +54,15 @@
                     </div>
                 </div>
             </div>
-                <div id="test2" class="col s12">
+
+            <!-- New Row -->
+                
+            <div id="test2" class="col s12">
                     <div class="row">
-                        <div class="input-field col s6">                       
+                        <div class="input-field col s4">                       
                             <form method="post" action="">
-                                City:
-                                <input type="text" name="City">
+                                <label for="City">City:</label>
+                                <input id="City" type="text" name="City">
                                 <br/>
                                 State:
                                 <input type="text" name="State">
@@ -68,14 +71,19 @@
                                 <input type="text" name="Zip">                                
                                 <input type="submit" value="Submit">
                             </form>
+                            <div class="col s4">Search History</div>
+                            <div class="col s4">Results</div>
                             <br/>
-                                <div class="col s6">
-                                    <div id="map"></div>
-                                </div>
+       
                         </div>
                     </div>
-                </div>
+            </div>
         </div>
+        
+        <div class="row s12">
+        <div id="map"></div>
+        </div>
+        
                 <div class="showcase">
                     <div class="carousel">
                         <a class="carousel-item"><img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></a>
