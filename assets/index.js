@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var instance = M.Tabs.init(tabs);
 
 
+
     $(document).on("change", "#spirits", function(e) {
         var spiritChoice = $('#spirits').find('option:selected').val();
         getDrinks(spiritChoice);
@@ -28,6 +29,19 @@ document.addEventListener('DOMContentLoaded', function() {
         searchDrink(e.target.text);
     })
 
+
+
+    $('#cocktailTab').on('click', function() {
+        $('.showcase').removeClass('hidden');
+        $('#mapHide').addClass('hidden');
+    })
+
+    $('#breweryTab').on('click', function() {
+        $('.showcase').addClass('hidden');
+        $('#mapHide').removeClass('hidden');
+    })
+  
     getRandomDrink();
     getDrinkHistory();
+
 });
