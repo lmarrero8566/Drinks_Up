@@ -12,26 +12,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/style.css">
-    <title>Document</title>
+    <title>Drinks Up!</title>
 </head>
 
 <body>
 
-    <h1>TITLE</h1>
+    <h1>DRINKS UP</h1>
 
     <main>       
         <div class="container">
-            <div class="row">
-                <div class="col s12">
+            <div class="col s12">
                     <ul class="tabs">
-                        <li class="tab col s3"><a class="active" href="#test1">Find a Drink at Home</a></li>
-                        <li class="tab col s3"><a href="#test2">Find a Drink Nearby</a></li>
+                        <li class="tab col s3"><a id="cocktailTab" class="active" href="#cocktail">Find a Drink at Home</a></li>
+                        <li class="tab col s3"><a id="breweryTab" href="#brewery">Find a Drink Nearby</a></li>
                     </ul>
-                </div>
-                <div id="test1" class="col s12">
+            </div>
+
+            <!-- COCKTAIL TAB -->
+
+                <div id="cocktail" class="col s12">
                     <div class="row">
                         <div class="input-field col s6">
-                            <select>
+                            <select id="spirits">
                             <option value="" disabled selected>Drinks</option>
                             <option value="Tequila">Tequila</option>
                             <option value="Vodka">Vodka</option>
@@ -42,47 +44,115 @@
                             </select>
                             <label>Choose preferred drink</label>
 
-                            <form method="post" action="">
+                            <form id="drinksearch">
                                 Type desired drink:
-                                <input type="text" name="City">
-                                <br/>
-                                <input type="submit" value="Submit">
+                                <input type="text" id="searchDrink">
+                            <!-- Submit button -->
+                                <input type="submit" value="Submit"></form>
+                                <div id="drinkHistory"></div>
 
                         </div>
-                      <div class="col s6">Ingridients will be here</div>
+
+                        <!-- Adittional DIVS -->
+
+                      <div class="col s6"><div id= "drinkTitle"></div>
+                      <div id="ingridients">Ingridients will be here</div> <div id="instructions"></div> Instructions will be here</div>
                           
                     </div>
                 </div>
-            </div>
 
-            <!-- New Row -->
+            <!-- BREWERY TAB -->
                 
-            <div id="test2" class="col s12">
+            <div id="brewery" class="col s12">
                     <div class="row">
                         <div class="input-field col s4">                       
                             <form method="post" action="">
-                                <label for="City">City:</label>
-                                <input id="City" type="text" name="City">
-                                <br/>
+                                Brewery Name:
+                                <input id="brewName" type="text" name="BreweryName">
+                                Type:
+                                <input list="types" id="brewType" type="text" name="Type">
+                                <datalist id="types">
+                                    <option value="Micro"></option>
+                                    <option value="Nano"></option>
+                                    <option value="Regional"></option>
+                                    <option value="Brewpub"></option>
+                                    <option value="Large"></option>
+                                    <option value="Planning"></option>
+                                    <option value="Bar"></option>
+                                    <option value="Contract"></option>
+                                    <option value="Proprietor"></option>
+                                    <option value="Closed"></option>
+                                </datalist>
+                                City:
+                                <input id="brewCity" type="text" name="City">
                                 State:
-                                <input type="text" name="State">
-                                <br/>
+                                <input list="states" id="brewState" type="text" name="State">
+                                <datalist id="states">
+                                    <option value='Alabama'></option>
+                                    <option value='Alaska'></option>
+                                    <option value='Arizona'></option>
+                                    <option value='Arkansas'></option>
+                                    <option value='California'></option>
+                                    <option value='Colorado'></option>
+                                    <option value='Connecticut'></option>
+                                    <option value='Delaware'></option>
+                                    <option value='Florida'></option>
+                                    <option value='Georgia'></option>
+                                    <option value='Hawaii'></option>
+                                    <option value='Idaho'></option>
+                                    <option value='Illinois'></option>
+                                    <option value='Indiana'></option>
+                                    <option value='Iowa'></option>
+                                    <option value='Kansas'></option>
+                                    <option value='Kentucky'></option>
+                                    <option value='Louisiana'></option>
+                                    <option value='Maine'></option>
+                                    <option value='Maryland'></option>
+                                    <option value='Massachusetts'></option>
+                                    <option value='Michigan'></option>
+                                    <option value='Minnesota'></option>
+                                    <option value='Mississippi'></option>
+                                    <option value='Missouri'></option>
+                                    <option value='Montana'></option>
+                                    <option value='Nebraska'></option>
+                                    <option value='Nevada'></option>
+                                    <option value='New Hampshire'></option>
+                                    <option value='New Jersey'></option>
+                                    <option value='New Mexico'></option>
+                                    <option value='New York'></option>
+                                    <option value='North Carolina'></option>
+                                    <option value='North Dakota'></option>
+                                    <option value='Ohio'></option>
+                                    <option value='Oklahoma'></option>
+                                    <option value='Oregon'></option>
+                                    <option value='Pennsylvania'></option>
+                                    <option value='Rhode Island'></option>
+                                    <option value='South Carolina'></option>
+                                    <option value='South Dakota'></option>
+                                    <option value='Tennessee'></option>
+                                    <option value='Texas'></option>
+                                    <option value='Utah'></option>
+                                    <option value='Vermont'></option>
+                                    <option value='Virginia'></option>
+                                    <option value='Washington'></option>
+                                    <option value='West Virginia'></option>
+                                    <option value='Wisconsin'></option>
+                                    <option value='Wyoming'></option>
+                                </datalist>
                                 Zip:
-                                <input type="text" name="Zip">                                
+                                <input id="brewZip" type="text" name="Zip">
+                              <!--Submit button-->
                                 <input type="submit" value="Submit">
                             </form>
-                            <div class="col s4">Search History</div>
-                            <div class="col s4">Results</div>
-                            <br/>
-       
+                                 
                         </div>
+                        <div id="brewHist" class="col s4"></div>
+                        <div id="brewResults" class="col s4 purple"></div>
                     </div>
             </div>
         </div>
-        
-        <div class="row s12">
-        <div id="map"></div>
-        </div>
+    </div>
+       
         
                 <div class="showcase">
                     <div class="carousel">
@@ -93,8 +163,14 @@
                         <a class="carousel-item"><img src="https://image.shutterstock.com/image-photo/selection-best-selling-drinks-beer-260nw-493912132.jpg"></a>
                     </div>
                 </div>
+
+                <div class="hidden" id="mapHide">
+                    <div id="map" class="hidden"></div>
+                    </div>
+
     </main>
     <script src="./assets/map.js"></script>
+    <script src="./assets/cocktail.js"></script>
     <script src="./assets/index.js"></script>
     <script src="./assets/brewery.js"></script>
 </body>
