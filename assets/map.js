@@ -17,8 +17,10 @@ function popMap(places) {
     for (var i = 0; i < places.length; i++) {
         let lat = places[i].latitude;
         let lon = places[i].longitude;
+        if (lat != null && lon != null) {
         L.marker([lat, lon]).addTo(mapDB)
             .bindPopup(`${places[i].name}`)
             .openPopup();
+        }
     }
 }
