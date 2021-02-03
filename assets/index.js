@@ -29,6 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
         searchDrink(e.target.text);
     })
 
+    
+    //Prevents default action for the submit button on the brewery page
+    $('#brewSearch').submit((f) => {
+        f.preventDefault();
+    });
+
+    //Run the open brewery functions
+    $("#brewSearch").on("click", brewRetrieve);
+
+
 
 
     $('#cocktailTab').on('click', function() {
