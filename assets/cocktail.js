@@ -1,3 +1,6 @@
+// Initialize Global Variable
+var drinkHistory = [];
+
 // Get Drink info(name, ingredients, instructions)
 function drinkInfo() {
     let id = $('.carousel').find('a.carousel-item.active').data("drinkId");
