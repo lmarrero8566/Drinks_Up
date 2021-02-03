@@ -4,11 +4,11 @@
     height: 512px;
 }
 
-#test1 {
+#cocktail {
     height: 30vh;
 }
 
-#test2 {
+#brewery {
     height: 30vh;
 }
 
@@ -17,11 +17,23 @@ h1 {
     height: 10vh;
 }
 
-
 body {
     background-color: lightgray;
+}
+
+.drink {
+    text-transform: capitalize;
+}
 
 .hidden {
     display: none;
+}
 
+.carousel-pic {
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    background-size: contain;
+    color: black;
+    text-shadow: 2px 2px lightblue;
 }
