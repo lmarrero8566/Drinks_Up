@@ -17,7 +17,7 @@
 
 <body>
 
-    <h1>DRINKS UP</h1>
+    <h1 class="neon">DRINKS<span id="flux">UP<span id="neon">!</span></h1>
 
     <main>       
         <div class="container">
@@ -32,9 +32,10 @@
 
                 <div id="cocktail" class="col s12">
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
+                            Choose preferred Spirit:
                             <select id="spirits">
-                            <option value="" disabled selected>Drinks</option>
+                            <option value="" disabled selected>Spirits</option>
                             <option value="Tequila">Tequila</option>
                             <option value="Vodka">Vodka</option>
                             <option value="Rum">Rum</option>
@@ -42,21 +43,23 @@
                             <option value="Gin">Gin</option>
                             <option value="Brandy">Brandy</option>
                             </select>
-                            <label>Choose preferred drink</label>
-
+                            <h5>OR</h5>
                             <form id="drinkSearch">
-                                Type desired drink:
+                                Type desired Drink:
                                 <input type="text" id="searchDrink">
-                            <!-- Submit button -->
+                            
+                                <!-- Submit button -->
+                                
                                 <input type="submit" value="Submit"></form>
-                                <div id="drinkHistory"></div>
+                                <div><h5>Search History</h5><div id="drinkHistory"></div></div>
 
                         </div>
 
                         <!-- Adittional DIVS -->
 
-                      <div class="col s6"><div id= "drinkTitle"></div>
-                      <div id="ingredients">Ingridients will be here</div> <div id="instructions"></div> Instructions will be here</div>
+                      <div class="col s4"><h4 id= "drinkTitle"></h4>
+                      <div id="ingredients">Ingridients will be here</div></div>
+                      <div class="col s4"><h5>Instructions</h5><div id="instructions"></div></div>
                           
                     </div>
                 </div>
@@ -141,13 +144,15 @@
                                 </datalist>
                                 Zip:
                                 <input id="brewZip" type="text" name="Zip">
-                              <!--Submit button-->
-                                <input type="submit" value="Submit">
+                              
+                                <!--Submit button-->
+                                
+                                <input id="brewSearch" type="submit" value="Submit">
                             </form>
                                  
                         </div>
                         <div id="brewHist" class="col s4"></div>
-                        <div id="brewResults" class="col s4 purple"></div>
+                        <div id="brewResults" class="col s4"></div>
                     </div>
             </div>
         </div>
@@ -156,11 +161,7 @@
         
                 <div class="showcase">
                     <div class="carousel">
-                        <a class="carousel-item"><img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"></a>
-                        <a class="carousel-item"><img src="https://s3.envato.com/files/278553363/AD4A1397.jpg"></a>
-                        <a class="carousel-item"><img src="https://as2.ftcdn.net/jpg/02/01/97/21/500_F_201972150_6Kqt5pZDeHpVSIColag0hwwZarnRgFod.jpg"></a>
-                        <a class="carousel-item"><img src="https://s3.envato.com/files/293176709/_00A0660.jpg"></a>
-                        <a class="carousel-item"><img src="https://image.shutterstock.com/image-photo/selection-best-selling-drinks-beer-260nw-493912132.jpg"></a>
+                        <a class="carousel-item"><img src="https://www.thecocktaildb.com/images/media/drink/wysqut1461867176.jpg"></a>
                     </div>
                 </div>
 
@@ -171,8 +172,8 @@
     </main>
     <script src="./assets/map.js"></script>
     <script src="./assets/cocktail.js"></script>
-    <script src="./assets/index.js"></script>
     <script src="./assets/brewery.js"></script>
+    <script src="./assets/index.js"></script>
 </body>
 
 </html>
