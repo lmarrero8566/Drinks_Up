@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchDrink(e.target.text);
     })
 
-    
+
     //Prevents default action for the submit button on the brewery page
     $('#brewForm').submit((f) => {
         f.preventDefault();
@@ -43,14 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     $('#cocktailTab').on('click', function() {
         $('.showcase').removeClass('hidden');
-        $('#mapHide').addClass('hidden');
+        $('#mapContainer').removeClass('mapCont');
+        $('#mapContainer').addClass('hidden');
     })
 
     $('#breweryTab').on('click', function() {
         $('.showcase').addClass('hidden');
-        $('#mapHide').removeClass('hidden');
+        $('#mapContainer').removeClass('hidden');
+        $('#mapContainer').addClass('mapCont');
     })
-  
+
     getRandomDrink();
     getDrinkHistory();
 
