@@ -41,6 +41,15 @@ body {
     cursor: pointer;
 }
 
+#instructions {
+    height: 35vh;
+    overflow: scroll;
+}
+
+.carousel {
+    height: 300px;
+}
+
 .tabs {
     border-radius: 15px 15px 0px 0px;
     background-color: #F5F5F5;
