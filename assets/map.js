@@ -3,7 +3,7 @@ function popMap(places) {
         let lat = places[i].latitude;
         let lon = places[i].longitude;
         if (lat != null && lon != null) {
-            L.marker([lat, lon]).addTo(mapDB)
+            L.marker([lat, lon]).addTo(myApp.map)
                 .bindPopup(`${places[i].name}`)
                 .openPopup();
         }
