@@ -38,7 +38,6 @@
 
         //This functions checks to make sure there are valid user inputs, not null and not undefined.
             function nullCheck(item, index, arr)    {
-                console.log(arr[index].value);
                 if (arr[index].value != "" && arr[index].value != null) {
                 bdbQueryURL.push("&" + arr[index].param + arr[index].value);
                 bdbQueryURL = bdbQueryURL.join("");
@@ -51,18 +50,6 @@
         return bdbQueryURL;
     };
 
-
-
-    //Creates buttons for each of the results
-    function renderResults(index)   {
-        // $("#brewResults").empty();
-        // console.log(response);
-            var btn = $("<button>");
-            btn.addClass("btn-large");
-            btn.text($(this)[index].name);
-            $("#brewResults").append(btn);
-            console.log("this button creation worked");
-    };
 
 
     //Makes the API Call
@@ -78,11 +65,10 @@
                     console.log(response);
                     $(response).each(function(index) {
                         var btn = $("<button>");
+                        // btn.attr({type: "button", onclick: "parent.open('" + $(this)[index].website_url + "')" });
                         btn.addClass("btn-large");
-                        btn.attr("href",response[index].website)
                         btn.text(response[index].name);
                         $("#brewResults").append(btn);
-                        console.log("this button creation worked");
                     });
                 });
     };
