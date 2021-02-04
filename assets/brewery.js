@@ -1,137 +1,89 @@
-    //Declaring all global variables
-    var bdbQueryURL = ["https://api.openbrewerydb.org/breweries"];
-
-    //Empty array that will be used to store all of the results from the API GET request
-    var resultsObj = [];
-
-    //Query URL array. This allows us to take in multiple optional criteria
-    var brewInput = [];
+    
+    //Open brewery base url
+    var bdbQueryURL = ["https://api.openbrewerydb.org/breweries?per_page=5"];
 
     //Declaring global variables for the brewery inputs
 
     var brewName = {
-        param: "?by_name",
+        param: "by_name=",
         value: ""
     };
     
     var brewType = {
-        param: "?by_type",
+        param: "by_type=",
         value: ""
     };
 
     var brewCity = {
-        param: "?by_city",
+        param: "by_city=",
         value: ""
     };
 
     var brewState = {
-        param: "?by_state",
+        param: "by_state=",
         value: ""
     };
 
     var brewZip = {
-        param: "?by_postal",
+        param: "by_postal=",
         value: ""
     };
-   
-    //Query that checks for null values. It will only include values that are not null into the query url array
-
-    function nullCheck(varName)  {
-        if (varName.value !== "")   {
-            brewInput.push(varName);
-            console.log(brewInput);
-        };
-        return brewInput;
-    };
-
+    
 
     //This forms the Open Brewery 
 
-    function formQueryURL() {
-        console.log("formQuery ran");
-        //This checks to see if each variable has a value. if it does, then it's added to the array.
-        nullCheck(brewName);
-        nullCheck(brewType);
-        nullCheck(brewCity);
-        nullCheck(brewState);
-        nullCheck(brewZip);
+    function formQueryURL(v,w,y,x,z) {
+        var brewInput = [v,w,y,x,z];
+        bdbQueryURL = ["https://api.openbrewerydb.org/breweries?per_page=5"];
 
-        // nullCheck(brewZip);
-        if (brewInput.length === 0) {
-            p = $("<p>");
-            p.text("You must provide at least one criteria")
-            $("brewresults").append(p);
-        }
-        else    {
-            //adds the first param to the query string so that all of the remaining params can include the & symbol
-            bdbQueryURL = bdbQueryURL + brewInput[0].param + brewInput[0].value;
-            brewInput.splice(0,1);
+        //This functions checks to make sure there are valid user inputs, not null and not undefined.
+            function nullCheck(item, index, arr)    {
+                if (arr[index].value != "" && arr[index].value != null) {
+                bdbQueryURL.push("&" + arr[index].param + arr[index].value);
+                bdbQueryURL = bdbQueryURL.join("");
+                };
+                return bdbQueryURL;
+            };
+        //End of nullCheck Function
 
-            //Iterates through the remaining objects in the array and adds them to the queryURL.
-            brewInput.forEach(function(thisEl)  {
-                bdbQueryURL = bdbQueryURL + "&" + thisEl.param + thisEl.value;
-            });
-            return bdbQueryURL;
-        };
+        brewInput.forEach(nullCheck);
+        return bdbQueryURL;
     };
+
+
 
     //Makes the API Call
     function openBrew() {
-        
+        //Clear the results on click prior to getting the new result
+        $("#brewResults").empty();
         // //API request
         $.ajax({    
             url: bdbQueryURL,
             method: "GET"
             }) .then (function(response) {
                     popMap(response);
-                    $(response).each(function(thisEl)   {
-                        obj = {
-                            name: response[thisEl].name,
-                            street_1: response[thisEl].street,
-                            street_2: response[thisEl].address_2,
-                            street_3: response[thisEl].address_3,
-                            city: response[thisEl].city,
-                            state: response[thisEl].state,
-                            zip: response[thisEl].postal_code,
-                            phone: response[thisEl].phone,
-                            lon: response[thisEl].longitude,
-                            lat: response[thisEl].latitude,
-                            website: response[thisEl].website_url,
-                        };
-                        resultsObj.push(obj);
-                        return resultsObj;
-                    })
+                    console.log(response);
+                    $(response).each(function(index) {
+                        var btn = $("<button>");
+                        // btn.attr({type: "button", onclick: "parent.open('" + $(this)[index].website_url + "')" });
+                        btn.addClass("btn-large");
+                        btn.text(response[index].name);
+                        $("#brewResults").append(btn);
+                    });
                 });
-                return resultsObj;
-                console.log("openBrew ran");
     };
 
-    //Creates buttons for each of the results
-    function renderResults()    {
-        $("#brewResults").empty();
-        console.log(resultsObj);
-        for (var i = 0; i < 10; i++)    {
-            var btn = $("<button>");
-            btn.addClass("btn-small");
-            $("#brewResults").append(btn);
-            btn.text(resultsObj[i].name + "\nAddress:\n" + resultsObj[i].street_1 + "\n " + resultsObj[i].street_2 + "\n " + resultsObj[i].city + "," + resultsObj[i].state + "," + resultsObj[i].zip);
-            console.log("this button creation worked");
-        };
-    };
+    
+
 
     function brewRetrieve() {
-
-        console.log("the onclick worked");
-        formQueryURL();
+        bdbQueryURL = [];
+        brewName.value = $("#brewName").val();
+        brewType.value = $("#brewType").val();
+        brewCity.value = $("#brewCity").val();
+        brewState.value =$("#brewState").val();
+        brewZip.value =$("#brewZip").val();
+        formQueryURL(brewName, brewType, brewState, brewCity,brewZip);
         openBrew();
-        renderResults();
     };
-
-
-    //This will occur with the onclick event
-
-    // $(".brewSubmit").click(brewRetrieve);
-    // formQueryURL();
-    // openBrew();
-    // renderResults();
 

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     //Prevents default action for the submit button on the brewery page
-    $('#brewSearch').submit((f) => {
+    $('#brewForm').submit((f) => {
         f.preventDefault();
     });
 
