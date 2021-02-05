@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
             drinkInfo();
         }
     }
-    var carousel = document.querySelectorAll('.carousel', options);
-    var instances = M.Carousel.init(carousel);
+    var carousel = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(carousel, options);
     var select = document.querySelectorAll('select');
     var instances = M.FormSelect.init(select);
     var tabs = document.querySelectorAll('.tabs');
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 drinkInfo();
             }
         }
-        var carousel = document.querySelectorAll('.carousel', options);
-        var instances = M.Carousel.init(carousel);
+        var carousel = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(carousel, options);
     })
 
     $('#breweryTab').on('click', function() {
