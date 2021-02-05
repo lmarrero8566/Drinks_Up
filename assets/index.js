@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.showcase').removeClass('hidden');
         $('#mapContainer').removeClass('mapCont');
         $('#mapContainer').addClass('hidden');
+        var options = {
+            onCycleTo: () => {
+                drinkInfo();
+            }
+        }
+        var carousel = document.querySelectorAll('.carousel', options);
+        var instances = M.Carousel.init(carousel);
     })
 
     $('#breweryTab').on('click', function() {
