@@ -1,6 +1,6 @@
     
     //Open brewery base url
-    var bdbQueryURL = ["https://api.openbrewerydb.org/breweries?per_page=5"];
+    var bdbQueryURL = [];
 
     //Declaring global variables for the brewery inputs
 
@@ -28,13 +28,16 @@
         param: "by_postal=",
         value: ""
     };
+
+    var brewHist = [];
     
 
     //This forms the Open Brewery 
 
     function formQueryURL(v,w,y,x,z) {
         var brewInput = [v,w,y,x,z];
-        bdbQueryURL = ["https://api.openbrewerydb.org/breweries?per_page=5"];
+        bdbdQueryURL = bdbQueryURL.splice(0, 1); //resets the query URL to an empty array
+        bdbQueryURL = ["https://api.openbrewerydb.org/breweries?per_page=10"];
 
         //This functions checks to make sure there are valid user inputs, not null and not undefined.
             function nullCheck(item, index, arr)    {
@@ -44,31 +47,55 @@
                 };
                 return bdbQueryURL;
             };
-        //End of nullCheck Function
-
         brewInput.forEach(nullCheck);
         return bdbQueryURL;
     };
 
+    //Function that stores the search history
+    function storeBrewHistory(queryURL)    {
+    
+        if (brewHist == null) {
+            brewHist = [];
+            brewHist.push(queryURL);
+            localStorage.setItem("Brewery Search History", JSON.stringify(brewHist));
+            btnCreate(brewHist);
+        }
+        else if (brewHist.length < 8)   {
+            brewHist.push(queryURL);
+            localStorage.setItem("Brewery Search History", JSON.stringify(brewHist));
+            btnCreate(brewHist);
+            
+        }
+        else    {
+            brewHist.splice(0,1);
+            brewHist.push(queryURL);
+            localStorage.setItem("Brewery Search History", JSON.stringify(brewHist));
+            btnCreate(brewHist); 
+        };
+
+        brewHist = JSON.parse(localStorage.getItem("Brewery Search History"));
+        return brewHist;
+    };
 
 
     //Makes the API Call
-    function openBrew() {
+    function openBrew(brewApiURL,targetEl) {
         //Clear the results on click prior to getting the new result
-        $("#brewResults").empty();
+        targetEl.empty();
         // //API request
         $.ajax({    
-            url: bdbQueryURL,
+            url: brewApiURL,
             method: "GET"
             }) .then (function(response) {
                     popMap(response);
-                    console.log(response);
                     $(response).each(function(index) {
-                        var btn = $("<button>");
-                        // btn.attr({type: "button", onclick: "parent.open('" + $(this)[index].website_url + "')" });
-                        btn.addClass("btn-large");
-                        btn.text(response[index].name);
-                        $("#brewResults").append(btn);
+                        //Create a card for each result
+                        var brewCard = $("<div>");
+                        var brewP = $("<p>");
+                        brewCard.addClass("brew card-panel grey lighten-3");
+                        brewP.html("<strong><a target='_blank' href='" + response[index].website_url + "'>" + response[index].name +"</a><strong><br>" + response[index].street + "<br>" + response[index].city + ", " + response[index].state );
+                        brewCard.append(brewP);
+                        targetEl.append(brewCard);
                     });
                 });
     };
@@ -84,6 +111,7 @@
         brewState.value =$("#brewState").val();
         brewZip.value =$("#brewZip").val();
         formQueryURL(brewName, brewType, brewState, brewCity,brewZip);
-        openBrew();
+        openBrew(bdbQueryURL, $("#brewResults"));
+        storeBrewHistory(bdbQueryURL);
     };
 
