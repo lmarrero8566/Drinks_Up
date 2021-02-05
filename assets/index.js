@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
             drinkInfo();
         }
     }
-    var carousel = document.querySelectorAll('.carousel', options);
-    var instances = M.Carousel.init(carousel);
+    var carousel = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(carousel, options);
     var select = document.querySelectorAll('select');
     var instances = M.FormSelect.init(select);
     var tabs = document.querySelectorAll('.tabs');
@@ -45,12 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.showcase').removeClass('hidden');
         $('#mapContainer').removeClass('mapCont');
         $('#mapContainer').addClass('hidden');
+        var options = {
+            onCycleTo: () => {
+                drinkInfo();
+            }
+        }
+        var carousel = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(carousel, options);
     })
 
     $('#breweryTab').on('click', function() {
         $('.showcase').addClass('hidden');
         $('#mapContainer').removeClass('hidden');
         $('#mapContainer').addClass('mapCont');
+        setTimeout(function() { myApp.map.invalidateSize() }, 50);
     })
 
     getRandomDrink();
