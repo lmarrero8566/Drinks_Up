@@ -55,6 +55,11 @@ body {
     background-color: #F5F5F5;
 }
 
+
+.card-panel {
+    padding: 5px;
+}
+
 #brewery,
 #brewHist,
 #brewResults {
@@ -69,6 +74,7 @@ body {
 
 #brewResults {
     border-radius: 0px 0px 15px 0px;
+    overflow: scroll;
 }
 
 h1 {
