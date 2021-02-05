@@ -11,6 +11,9 @@ function drinkInfo() {
         url: q,
         type: "GET"
     }).then(function(res) {
+
+        if (res.drinks === undefined) return;
+
         $('#drinkTitle').text(`${res.drinks[0].strDrink}`);
         $('#instructions').text(`${res.drinks[0].strInstructions}`);
         $('#ingredients').empty();
@@ -104,6 +107,13 @@ function searchDrink(drink) {
         url: q,
         type: "GET"
     }).then(function(res) {
+
+        if (res.drinks == null) {
+            M.toast({ html: 'Drink not Found' });
+            $('#searchDrink').val('');
+            return;
+        }
+
         $('.carousel').empty();
         for (var i = 0; i < res.drinks.length; i++) {
             addDrinkCarousel(res.drinks[i]);
@@ -118,7 +128,7 @@ function searchDrink(drink) {
 
         addDrinkHistory(drink)
     }).catch(er => {
-
+        M.toast({ html: 'Something went wrong, Try again' });
     })
 }
 
@@ -143,7 +153,7 @@ function getDrinks(choice) {
         var caro = document.querySelectorAll('.carousel');
         var instances = M.Carousel.init(caro, options);
     }).catch(er => {
-
+        M.toast({ html: 'Something went wrong, Try again' });
     })
 }
 
