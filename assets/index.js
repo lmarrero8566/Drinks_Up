@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $('.showcase').addClass('hidden');
         $('#mapContainer').removeClass('hidden');
         $('#mapContainer').addClass('mapCont');
+        setTimeout(function() { myApp.map.invalidateSize() }, 50);
     })
 
     getRandomDrink();
