@@ -55,7 +55,6 @@ body {
     background-color: #F5F5F5;
 }
 
-
 .card-panel {
     padding: 5px;
 }
@@ -73,6 +72,7 @@ body {
 }
 
 #brewResults {
+    height: 37vh;
     border-radius: 0px 0px 15px 0px;
     overflow: scroll;
 }
@@ -114,6 +114,7 @@ body {
     line-height: 6vw;
     text-shadow: 0 0 2vw #F40A35;
     margin-bottom: 50px;
+    padding-top: 25px;
 }
 
 #flux {
@@ -164,10 +165,11 @@ body {
 
 @media (max-width: 890px) {
     #cocktail {
-        font-size: .8rem;
+        font-size: .7rem;
     }
-    #cocktail h4 {
-        font-size: 1.8rem;
+    #cocktail h4,
+    h5 {
+        font-size: 1.2rem;
     }
     .neon,
     #flux {
