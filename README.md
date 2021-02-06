@@ -34,8 +34,8 @@ THEN the, if the brewery has a website, it will open a new browser window to the
 
 ## Mock Up
 
-![Drinks_Up_Cocktail](./images/Cocktail_mockup.png)
-![Drinks_Up_Brewery](./images/Brewery_mockup.png)
+![Drinks_Up_Cocktail](.assets/images/Cocktail_mockup.png)
+![Drinks_Up_Brewery](.assets/images/Brewery_mockup.png)
 
 ## Deployed Website
 
